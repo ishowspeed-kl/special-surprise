@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Special Message For You ❤️</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #ffe6eb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 90%;
+            position: relative;
+        }
+
+        h1 {
+            color: #d63384;
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #6c757d;
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            height: 50px;
+            position: relative;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.1s ease;
+        }
+
+        #yesBtn {
+            background-color: #d63384;
+            color: white;
+        }
+
+        #noBtn {
+            background-color: #6c757d;
+            color: white;
+            position: absolute;
+            /* Explicitly set initial positions for JS tracking */
+            left: 55%; 
+        }
+
+        /* Hidden surprise content */
+        .hidden {
+            display: none;
+        }
+
+        .heart {
+            color: #d63384;
+            font-size: 5rem;
+            animation: beat 1s infinite alternate;
+        }
+
+        @keyframes beat {
+            to { transform: scale(1.1); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Prank Screen -->
+    <div class="container" id="prank-box">
+        <h1>Hey beautiful! ✨</h1>
+        <p>Do you think you're the prettiest girl in the world?</p>
+        
+        <div class="btn-group">
+            <button id="yesBtn" onclick="startErrorLoop()">Yes, 
+obviously</button>
+            <button id="noBtn" onmouseenter="moveButton()" 
+onclick="moveButton()">No</button>
+        </div>
+    </div>
+
+    <!-- The Actual Sweet Screen -->
+    <div class="container hidden" id="real-box">
+        <div class="heart">❤️</div>
+        <h1>Gotcha! 😂</h1>
+        <p>You couldn't click "No" anyway because it's a scientific fact. 
+I love you! Thanks for being the best gf ever.</p>
+    </div>
+
+    <script>
+        // 1. Make the "No" button run away
+        function moveButton() {
+            const noBtn = document.getElementById('noBtn');
+            
+            // Get random positions within the screen limits
+            const x = Math.random() * (window.innerWidth - 
+noBtn.offsetWidth - 20);
+            const y = Math.random() * (window.innerHeight - 
+noBtn.offsetHeight - 20);
+            
+            // Move it completely out of the container to absolute screen 
+space
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+        }
+
+        // 2. Fake Error Alerts when she clicks "Yes"
+        function startErrorLoop() {
+            alert("⚠️ SYSTEM ERROR: Confidence levels exceeding safe 
+parameters.");
+            alert("⚠️ ERROR 404: An exceptionally cute user has broken the 
+system.");
+            alert("⚠️ FINAL WARNING: Please smile at your screen to 
+complete verification.");
+            
+            // Hide the prank box, show the real message
+            document.getElementById('prank-box').classList.add('hidden');
+            
+document.getElementById('real-box').classList.remove('hidden');
+            
+            // Put the runaway button back where it belongs just in case
+            document.getElementById('noBtn').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
